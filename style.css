@@ -1,17 +1,20 @@
 :root {
-  --milk: #fbf7ef;
+  --milk: #fbf5eb;
   --warm-white: #fffdf8;
-  --greige: #d9d1c6;
-  --soft-greige: #eee7dc;
-  --silver: #c6c9ce;
-  --blue: #2457d6;
+  --greige: #d8cec0;
+  --soft-greige: #efe7dc;
+  --silver: #c9cdd2;
+  --silver-soft: #eef0f2;
+  --blue: #265bd8;
   --blue-dark: #173a93;
-  --powder: #f3d9dd;
-  --gold: #caa85b;
-  --ink: #202632;
-  --muted: #69707c;
-  --glass: rgba(255, 255, 255, 0.68);
-  --shadow: 0 24px 70px rgba(39, 50, 77, 0.12);
+  --powder: #f3d7de;
+  --powder-light: #fbecf0;
+  --gold: #c7a45a;
+  --ink: #20242d;
+  --muted: #74706b;
+  --glass: rgba(255, 253, 248, 0.7);
+  --paper: rgba(255, 251, 244, 0.88);
+  --shadow: 0 28px 86px rgba(68, 58, 48, 0.13);
   --radius-lg: 32px;
   --radius-md: 22px;
   --max-width: 1180px;
@@ -27,12 +30,13 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at 10% 5%, rgba(243, 217, 221, 0.7), transparent 24rem),
-    radial-gradient(circle at 86% 14%, rgba(36, 87, 214, 0.14), transparent 28rem),
-    linear-gradient(135deg, var(--milk), #f8f3ea 50%, #fbf6ef);
+    radial-gradient(circle at 12% 8%, rgba(243, 215, 222, 0.72), transparent 25rem),
+    radial-gradient(circle at 88% 12%, rgba(38, 91, 216, 0.13), transparent 30rem),
+    radial-gradient(circle at 80% 72%, rgba(201, 205, 210, 0.34), transparent 28rem),
+    linear-gradient(135deg, var(--milk), #f7efe4 48%, #fcf8f1);
   min-height: 100vh;
 }
 
@@ -41,9 +45,26 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(32, 38, 50, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(32, 38, 50, 0.035) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background-image:
+    linear-gradient(rgba(32, 36, 45, 0.026) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(32, 36, 45, 0.026) 1px, transparent 1px),
+    radial-gradient(circle at 18% 22%, rgba(199, 164, 90, 0.18) 0 2px, transparent 3px);
+  background-size: 72px 72px, 72px 72px, 210px 210px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 75%);
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto 6% 8% auto;
+  width: 13rem;
+  height: 13rem;
+  pointer-events: none;
+  border: 1px solid rgba(199, 164, 90, 0.28);
+  border-radius: 50%;
+  filter: blur(0.2px);
+  opacity: 0.38;
   z-index: -1;
 }
 
@@ -80,8 +101,10 @@ a {
 
 .logo {
   gap: 10px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .logo-mark {
@@ -157,14 +180,16 @@ p {
 
 h1,
 h2 {
-  letter-spacing: -0.065em;
-  line-height: 0.98;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
 }
 
 h1 {
   max-width: 780px;
   margin-bottom: 24px;
-  font-size: clamp(4rem, 9vw, 8.4rem);
+  font-size: clamp(4.2rem, 9vw, 8.8rem);
 }
 
 h2 {
@@ -174,8 +199,10 @@ h2 {
 
 h3 {
   margin-bottom: 12px;
-  font-size: 1.28rem;
-  letter-spacing: -0.035em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.72rem;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
 }
 
 .hero-lead {
@@ -185,7 +212,16 @@ h3 {
   font-size: clamp(1.32rem, 2.2vw, 2.15rem);
   line-height: 1.24;
   letter-spacing: -0.04em;
-  font-weight: 700;
+  font-weight: 600;
+}
+
+.hero-lead::after {
+  content: "";
+  display: block;
+  width: 124px;
+  height: 1px;
+  margin-top: 18px;
+  background: linear-gradient(90deg, var(--gold), rgba(199, 164, 90, 0));
 }
 
 .hero-text,
@@ -293,7 +329,8 @@ h3 {
   position: relative;
   color: white;
   font-size: 7rem;
-  font-weight: 800;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
   text-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
@@ -305,7 +342,7 @@ h3 {
 }
 
 .handwritten {
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Caveat", "Segoe Print", "Bradley Hand", cursive;
   color: var(--blue);
   font-size: 2rem;
 }
@@ -403,16 +440,44 @@ h3 {
 .difference-panel,
 .cta-panel {
   border: 1px solid rgba(255, 255, 255, 0.78);
-  background: var(--glass);
+  background: linear-gradient(145deg, var(--glass), rgba(238, 240, 242, 0.46));
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
 }
 
 .service-card {
-  min-height: 300px;
-  padding: 28px;
+  position: relative;
+  isolation: isolate;
+  min-height: 330px;
+  padding: 30px 28px 26px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 205, 210, 0.55);
   border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(255, 248, 239, 0.9)),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(201, 205, 210, 0.18) 32px 33px);
+  box-shadow: 0 24px 60px rgba(68, 58, 48, 0.11), inset 0 0 0 1px rgba(255, 255, 255, 0.58);
   transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 16px 18px auto;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(38, 91, 216, 0.42), rgba(199, 164, 90, 0.36), transparent);
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  bottom: -34px;
+  z-index: -1;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 215, 222, 0.78), rgba(243, 215, 222, 0));
 }
 
 .service-card:hover,
@@ -425,12 +490,44 @@ h3 {
 .card-number,
 .case-kicker {
   display: inline-flex;
-  margin-bottom: 70px;
+  margin-bottom: 54px;
   color: var(--blue);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.card-number {
+  min-width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(38, 91, 216, 0.18);
+  border-radius: 50%;
+  background: rgba(238, 240, 242, 0.58);
+}
+
+.service-sticker {
+  position: absolute;
+  top: 28px;
+  right: 22px;
+  display: inline-flex;
+  padding: 8px 12px;
+  border: 1px solid rgba(199, 164, 90, 0.34);
+  border-radius: 999px;
+  color: #7d6a43;
+  background: rgba(255, 250, 237, 0.86);
+  font-family: "Caveat", cursive;
+  font-size: 1.14rem;
+  transform: rotate(3deg);
+}
+
+.soft-note {
+  margin: 22px 0 0;
+  color: var(--blue);
+  font-size: 1.65rem;
+  line-height: 1;
 }
 
 .service-card p,
@@ -458,7 +555,9 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(230, 235, 250, 0.68));
+  background:
+    linear-gradient(135deg, rgba(255, 253, 248, 0.86), rgba(238, 240, 242, 0.68)),
+    radial-gradient(circle at 92% 14%, rgba(38, 91, 216, 0.12), transparent 18rem);
 }
 
 .case-image {
@@ -514,6 +613,7 @@ h3 {
 .placeholder-product { background: linear-gradient(135deg, #f5f0e7, #89a2ef); }
 .placeholder-board { background: linear-gradient(135deg, #f7eee0, #c7ccd4); }
 .placeholder-video { background: linear-gradient(135deg, #dce5ff, #f3d9dd 72%, #fff); }
+.placeholder-models { background: linear-gradient(135deg, #f4d9df, #cfd5dc 48%, #265bd8); }
 
 .case-content {
   padding: 16px 14px;
@@ -530,8 +630,8 @@ h3 {
   padding: 44px;
   border-radius: 42px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.46)),
-    radial-gradient(circle at 100% 0%, rgba(36, 87, 214, 0.16), transparent 36rem);
+    linear-gradient(135deg, rgba(255, 253, 248, 0.78), rgba(238, 240, 242, 0.46)),
+    radial-gradient(circle at 100% 0%, rgba(38, 91, 216, 0.16), transparent 36rem);
 }
 
 .difference-list {
@@ -590,9 +690,9 @@ h3 {
   text-align: center;
   border-radius: 44px;
   background:
-    radial-gradient(circle at 14% 18%, rgba(243, 217, 221, 0.78), transparent 22rem),
-    radial-gradient(circle at 90% 0%, rgba(36, 87, 214, 0.16), transparent 26rem),
-    rgba(255, 255, 255, 0.7);
+    radial-gradient(circle at 14% 18%, rgba(243, 215, 222, 0.82), transparent 22rem),
+    radial-gradient(circle at 90% 0%, rgba(38, 91, 216, 0.16), transparent 26rem),
+    linear-gradient(145deg, rgba(255, 253, 248, 0.82), rgba(238, 240, 242, 0.58));
 }
 
 .cta-panel .handwritten {
